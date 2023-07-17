@@ -1,10 +1,11 @@
 package rest.webservices.webservices.controllers;
 
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import rest.webservices.webservices.entities.User;
 import rest.webservices.webservices.repository.UserDao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,8 +33,13 @@ public class UserResource {
         return user;
     }
 
+    @DeleteMapping(path = "/users/{id}")
+    public void deleteOne(@PathVariable int id) {
+        userDao.deleteOne(id);
+    }
+
     @PostMapping("/users")
-    public void saveUser(@RequestBody User user) {
+    public void createUser(@Valid @RequestBody User user) {
         userDao.save(user);
     }
 }

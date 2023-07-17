@@ -31,6 +31,11 @@ public class UserDao {
                 .orElse(null);
     }
 
+    public void deleteOne(int id) {
+        Predicate<? super User> predicate = user -> user.getId().equals(id) ;
+        users.removeIf(predicate);
+    }
+
     public void save(User user){
         users.add(user);
     }
