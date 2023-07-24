@@ -1,4 +1,4 @@
-package rest.webservices.webservices;
+package rest.webservices.webservices.entities;
 
 public class HelloWorld {
 
